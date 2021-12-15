@@ -1,0 +1,96 @@
+<form [formGroup]="eventForm" *ngIf="eventForm" (ngSubmit)="handleSaveEvent()">
+    <div class="form-check form-switch">
+        <input class="form-check-input" formControlName="finalDateInputDisplay"
+            type="checkbox" role="switch"
+            [checked]="finalDateInputDisplay" (change)="datePickerVisibility()">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Event
+            lasting
+            longer than one day</label>
+    </div>
+    
+    <!-- calendários -->
+    <div class="input-date">
+        <div class="input-group mb-3">
+            <span class="input-group-text">
+                <bi id="calendar-bi" name="calendar-event"></bi>
+            </span>
+            <input name="dp" (click)="d.toggle()" ngbDatepicker
+                #d="ngbDatepicker" formControlName="initialDate"
+                class="form-control"
+                [placeholder]="finalDateInputDisplay ? 'Initial date' : 'Date'"
+                aria-label="date"
+                aria-describedby="basic-addon1"
+                (keypress)="keyPressCharacters($event)">
+        </div>
+
+        <div *ngIf="finalDateInputDisplay" class="input-group mb-3">
+            <span class="input-group-text">
+                <bi id="calendar-bi" name="calendar-event"></bi>
+            </span>
+
+            <input name="dp" (click)="d.toggle()" ngbDatepicker
+                #d="ngbDatepicker" formControlName="finalDate"
+                class="form-control"
+                placeholder="Final date" aria-label="date"
+                aria-describedby="basic-addon1"
+                (keypress)="keyPressCharacters($event)">
+        </div>
+    </div>
+
+    <small class="text-danger"
+        *ngIf="eventForm.get('initialDate')?.hasError('pastDateError')"> The
+        date can't be a past one </small>
+    <small class="text-danger"
+        *ngIf="eventForm.get('finalDate')?.hasError('finalDateBeforeInitial')">
+        The final date can't be before the initial </small>
+
+    <!-- input de tempo -->
+    <div class="input-time">
+        <div class="input-time-group mb-3">
+            <label>From:</label>
+            <ngb-timepicker formControlName="initialHour" [spinners]="spinners"></ngb-timepicker>
+        </div>
+
+        <div class="input-time-group mb-3">
+            <label>To: </label>
+            <ngb-timepicker formControlName="finalHour" [spinners]="spinners"></ngb-timepicker>
+        </div>
+    </div>
+
+    <small class="text-danger"
+        *ngIf="eventForm.get('finalHour')?.hasError('finalHourBeforeInitial')">
+        The final hour can't be before the initial </small>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text">
+            <bi name="pencil"></bi>
+        </span>
+        <input formControlName="title" type="text" class="form-control"
+            placeholder="Title" aria-label="title"
+            aria-describedby="basic-addon1">
+    </div>
+
+    <small class="text-danger"
+        *ngIf="eventForm.get('title')?.hasError('minlength')"> The title must be
+        longer </small>
+
+    <!-- titulo -->
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">
+                <bi name="filter-left"></bi>
+            </span>
+        </div>
+        <textarea formControlName="description" type="text"
+            class="form-control"
+            placeholder="Description" aria-label="description"
+            aria-describedby="basic-addon1"> </textarea>
+    </div>
+
+    <small class="text-danger"
+        *ngIf="eventForm.get('description')?.hasError('minlength')"> The
+        description must be longer </small>
+
+    <button type="submit" [disabled]="!eventForm.valid" class="btn btn-primary
+        btn-filled">Save event</button>
+</form>

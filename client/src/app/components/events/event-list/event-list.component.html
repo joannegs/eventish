@@ -1,0 +1,5 @@
+ <div *ngFor="let event of events" class="list-group">
+    <table *ngIf="events" class="table table-striped table-hover">
+        <event-details [event]="event" [isGuest]=isGuest></event-details>
+    </table>
+</div>

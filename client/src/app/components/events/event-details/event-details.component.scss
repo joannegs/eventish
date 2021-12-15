@@ -1,0 +1,43 @@
+@import '../../../app.definitions.scss';
+
+.list-group-item {
+    background-color: $whitesmoke;
+
+    .date-event {
+        font-weight: 600;
+    }
+}
+
+.text {
+    @include noTextSelection();
+    text-align: center;
+}
+
+.active {
+    background-color: $darkersBlueGreen;
+}
+
+.list-group-item {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.options{
+    @include clickable();
+}
+
+.event-header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .event-title{
+        width: inherit; 
+    }
+}
+

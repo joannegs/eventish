@@ -1,0 +1,46 @@
+@import '../../../app.definitions.scss';
+
+.form-check {
+    [type="checkbox"] {
+        &:checked {
+            background-color: $blueGreen;
+            color: white;
+            border: none;
+        }
+    }
+}
+
+label {
+    color: grey;
+}
+
+form {
+
+    .input-date, .input-time, .input-group  {
+        @include inputSpan();
+    }
+
+    @include formDisplay();
+    
+    .ng-invalid {
+        border: none;
+    }
+
+    .input-date,
+    .input-time {
+        display: flex;
+        justify-content: space-between;
+
+        input {
+            max-width: 15vw;
+        }
+    }
+
+    .input-time {
+        width: 60%;
+    }
+
+    button {
+        @include buttonPattern();
+    }
+}

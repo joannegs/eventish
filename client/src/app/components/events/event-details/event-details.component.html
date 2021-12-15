@@ -1,0 +1,41 @@
+<a class="event-title list-group-item list-group-item-action list-group-flush"
+    [ngClass]="{'active': !isCollapsed}"
+    aria-current="false">
+    <div class="event-header"> 
+        <p class="event-title" (click)="collapseToggle()">{{event.title}}</p>
+
+        <div class="options" ngbDropdown>
+            <div class="header-component">
+                <div ngbDropdownToggle>
+                    <bi name="three-dots-vertical"></bi>
+                </div>
+            </div>
+    
+            <div *ngIf="!isGuest" ngbDropdownMenu>
+                <a class="dropdown-item" (click)="deleteEvent()">Delete</a>
+                <a class="dropdown-item" (click)="displayUpdateEventForm()">Edit</a>
+                <a class="dropdown-item" (click)="displayInviteForm()">Invite guests</a>
+                <a class="dropdown-item">See guests</a>
+            </div>
+    
+            <div *ngIf="isGuest" ngbDropdownMenu>
+                <a class="dropdown-item" (click)="deleteEventInvite()">Delete event invite</a>
+            </div>
+    
+        </div>
+    </div>
+
+    
+</a>
+
+<div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed"
+    class="text event-info">
+    <div class="event-main-info">
+        <p> {{event.description}} </p>
+    </div>
+
+    <div class="event-hour-info">
+        <p> <b>Starts at:</b> {{ initialDate | date }} – {{ initialDate | date:'HH:mm' }}</p>
+        <p> <b>Ends at:</b> {{ finalDate |  date }} – {{ finalDate | date:'HH:mm' }} </p>
+    </div>
+</div>
