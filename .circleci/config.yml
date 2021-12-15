@@ -9,6 +9,5 @@ jobs:
     - checkout
     - run: cd client
     - run: npm install 
-    - run: tar -cf dist.tar dist
     - store_artifacts:
         path: ~/repo/dist.tar
