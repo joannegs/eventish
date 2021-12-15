@@ -1,0 +1,20 @@
+@import "../node_modules/primeng/resources/primeng.min.css";
+@import "../node_modules/primeicons/primeicons.css";
+@import "../node_modules/primeng/resources/themes/saga-blue/theme.css";
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+
+
+.ng-invalid:not(form):not(:placeholder-shown):not(:focus) {
+    border: 1px solid red;
+}
+
+ngb-timepicker {
+    border: none
+    input {
+        background-color: rgba(52, 104, 191, 1);
+    }
+
+    fieldset {
+        border: none;
+    }
+}
