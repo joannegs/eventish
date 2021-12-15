@@ -1,0 +1,38 @@
+@import "../../app.definitions.scss";
+
+
+.dashboard {
+    .new-event-button{
+        @include buttonPattern();
+        padding: 10px;
+    }
+    
+    .spinner-grow{
+        color: $blueGreen;
+        margin-top: 5vh;
+    }
+
+    .change-table-display{
+        font-size: 1rem;
+        @include clickable();
+    }
+
+    ng-template{
+        margin-top: 5vh; 
+    }
+
+    button {
+        @include buttonPattern();
+        margin-top: 6vh;
+    }
+
+    p-confirmDialog {
+        background-color: red;
+      }
+
+      .no-events-info{
+        text-align: center;
+        font-size: 1.5em;
+    }
+
+}

@@ -1,0 +1,33 @@
+<div class="container-fluid home-page">
+
+    <div class="container-sm row">
+        <div class="welcome-banner col-5">
+            <!-- parte superior do lado esquerdo -->
+            <div class="info">
+                <h3 class="text"> eventish </h3>
+                <h5 class="text"> all of your notes in one place </h5>
+            </div>
+
+            <!-- essa parte vai ser inferior, do lado esquerdo -->
+
+            <div class="sign-up" *ngIf="!displaySignUp">
+                <p class="text"> No account yet? </p>
+                <button (click)="handleChangeForm()" class="btn btn-primary btn-outline">Sign-up</button>
+            </div>
+
+            <div class="sign-in" *ngIf="displaySignUp">
+                <p class="text"> Already have an account? </p>
+                     <button (click) = "handleChangeForm()" class="btn btn-primary btn-outline">Sign-in</button>
+            </div>
+
+        </div>
+
+        <!-- parte da direita: poderá ser o component de login ou o de sign up -->
+        <div class="user-form col-7">
+            <sign-in *ngIf="!displaySignUp"></sign-in>
+            <sign-up *ngIf="displaySignUp"> </sign-up>
+        </div>
+
+    </div>
+
+</div>

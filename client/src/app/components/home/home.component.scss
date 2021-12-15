@@ -1,0 +1,119 @@
+@import "../../app.definitions.scss";
+
+.home-page {
+    @include page();
+
+    .welcome-banner,
+    .user-form {
+        @include centerDisplay();
+        @include centerColumn();
+        height: 75vh;
+        background-color: $blueGreen;
+        border-radius: 25px 0 0 25px;
+    }
+     
+    form {
+        @include formDisplay();
+    }
+    
+
+    .user-form {
+        color: $blueGreen;
+        background-color: $white;
+        border-radius: 0 25px 25px 0;
+    }
+
+    .welcome-banner {
+        color: $white;
+        justify-content: space-around;
+    }
+
+    .sign-up, .sign-in {
+        @include centerDisplay();
+        @include centerColumn();
+        font-weight: 900;
+    }
+
+    h3 {
+        font-size: 80px;
+    }
+
+    .text {
+        cursor: default;
+        @include noTextSelection();
+    }
+
+    button {
+        @include buttonPattern();
+    }
+
+    .btn-outline {
+        background-color: $blueGreen;
+        border: solid 1px $white;
+
+        &:hover {
+            border: solid 1px $white; 
+        }
+    }
+
+    @include inputSpan();
+}
+
+.home-page {
+    @include page();
+
+    .welcome-banner,
+    .user-form {
+        @include centerDisplay();
+        @include centerColumn();
+        height: 75vh;
+        background-color: $blueGreen;
+        border-radius: 25px 0 0 25px;
+    }
+     
+    form {
+        @include formDisplay();
+    }
+    
+
+    .user-form {
+        color: $blueGreen;
+        background-color: $white;
+        border-radius: 0 25px 25px 0;
+    }
+
+    .welcome-banner {
+        color: $white;
+        justify-content: space-around;
+    }
+
+    .sign-up, .sign-in {
+        @include centerDisplay();
+        @include centerColumn();
+        font-weight: 900;
+    }
+
+    h3 {
+        font-size: 80px;
+    }
+
+    .text {
+        cursor: default;
+        @include noTextSelection();
+    }
+
+    button {
+        @include buttonPattern();
+    }
+
+    .btn-outline {
+        background-color: $blueGreen;
+        border: solid 1px $white;
+
+        &:hover {
+            border: solid 1px $white; 
+        }
+    }
+
+    @include inputSpan();
+}

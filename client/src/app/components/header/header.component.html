@@ -1,0 +1,41 @@
+<nav class="navbar navbar-light bg-light container-fluid container-fluid">
+    <div class="col" ngbDropdown>
+
+            <div class="header-component">
+                <span class="badge badge-success rounded-circle"
+                    *ngIf="(invites$ | async)?.length as lengthInvites"> {{
+                    lengthInvites }} </span>
+                <bi name="envelope"></bi>
+                <div ngbDropdownToggle> Invites </div>
+
+            <div class="invite-box" ngbDropdownMenu>
+                <nav class="nav-box">
+                    <p *ngIf="invites$ | async as invites">You have <b>{{invites.length}}</b>
+                        event invites.</p>
+                </nav>
+                <div *ngFor="let invite of invites$ | async">
+                    <div class="invite-box-content">
+                        <app-invite-details [invite]=invite></app-invite-details>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="right-content-header">
+
+        <div ngbDropdown>
+            <div ngbDropdownToggle class="header-component col">
+                <bi name="person"></bi>
+            </div>
+            <div ngbDropdownMenu>
+                <a class="dropdown-item" (click)="displayUserForm()">My account</a>
+            </div>
+        </div>
+        <div class="header-component col" (click)="logout()">
+            <bi name="box-arrow-in-left"></bi>
+            <span> Logout </span>
+        </div>
+    </div>
+</nav>

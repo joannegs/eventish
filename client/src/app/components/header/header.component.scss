@@ -1,0 +1,54 @@
+@import "../../app.definitions.scss";
+
+.navbar {
+    margin-bottom: 6vh;
+
+    .header-component {
+        display: flex;
+        padding: 0 30px;
+        @include clickable();
+    }
+
+    .badge.badge-success{
+        background-color: $blueGreen;
+        margin-right: 10px;
+        border-radius: 100%;
+        padding: 0.5em;
+     }
+
+    .text {
+        @include noTextSelection();
+    }
+
+    .invite-box {
+        width: 80%;
+        text-align: center;
+
+        p {
+            padding: 1vh 1vw;
+        }
+
+        .nav-box {
+            background-color: $darkersBlueGreen;
+            color: $white;
+            font-size: 1.3em;
+        }
+    }
+
+    #right-content-header {
+        display: flex;
+
+        .dropdown-toggle::after {
+            display: none;
+        }
+
+        a {
+            cursor: pointer;
+        }
+    }
+
+    .invite-box-content {
+        width: 100%;
+    }
+}
+

@@ -1,0 +1,46 @@
+<app-header [invites$]=invites$></app-header>
+
+<div class="container dashboard">
+    <div class="row align-items-start">
+        <div *ngIf="eventsOwnerDisplay">
+            <div *ngIf="(events$ | async) as events; else loadingError" class="table">
+                <div class="no-events-info" *ngIf="events?.length == 0">
+                    No events here yet...
+                </div>
+                <event-list [events]=events [isGuest]=false> </event-list>
+            </div>
+            <div class="change-table-display" (click)="handleChangeDisplay()">
+                See invited events </div>
+        </div>
+
+        <div *ngIf="!eventsOwnerDisplay">
+            <div *ngIf="(guestEvents$ | async) as guestEvents; else loadingError" class="table">
+                <div class="no-events-info" *ngIf="guestEvents?.length == 0">
+                    No events here yet...
+                </div>
+                <event-list [events]=guestEvents [isGuest]=true> </event-list>
+            </div>
+            <div class="change-table-display" (click)="handleChangeDisplay()">
+                See my events </div>
+        </div>
+    </div>
+
+    <button class="new-event-button" (click)="displayNewEventForm()">new
+        event </button>
+
+    <ng-template #loadingError>
+        <div class="d-flex justify-content-center" *ngIf="error$ | async; else
+            loading">
+            An error has occurred while trying to load events. Please try again
+            later.
+        </div>
+
+        <ng-template #loading>
+            <div class="d-flex justify-content-center">
+                <div class="spinner-grow" role="status">
+                </div>
+            </div>
+        </ng-template>
+    </ng-template>
+
+</div>
