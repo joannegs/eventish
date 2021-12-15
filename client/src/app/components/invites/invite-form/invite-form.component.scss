@@ -1,0 +1,16 @@
+@import "../../../app.definitions.scss";
+
+.event-form {
+    @include formDisplay();
+
+    .input-group{
+        margin-top: 1vh;
+    }
+
+    button {
+        @include buttonPattern();
+        margin-top: 3vh;
+    }
+
+        @include inputSpan();
+}

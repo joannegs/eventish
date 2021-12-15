@@ -1,0 +1,22 @@
+<div class="event-form">
+    <div class="input-group mb-3">
+        <span class="input-group-text">
+            <bi name="person"></bi>
+        </span>
+        <input [(ngModel)]="email" type="text" class="form-control"
+            placeholder="Guest's e-mail" aria-label="E-mail"
+            aria-describedby="basic-addon1" required email>
+    </div>
+
+    <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <bi name="filter-left"></bi>
+          </span>
+        </div>
+        <textarea placeholder="Message" 
+        class="form-control" [(ngModel)]="message"></textarea>
+      </div>
+
+    <button (click)="checkGuestValidity()"> Send invite </button>
+</div>

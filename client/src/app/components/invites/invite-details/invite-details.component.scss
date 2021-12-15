@@ -1,0 +1,28 @@
+@import "../../../app.definitions.scss";
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    cursor: pointer;
+    width: 100%;
+    background-color: $lightBlue; 
+    align-items: baseline;
+
+    .invite-buttons {
+        width: 20%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    button {
+        @include buttonPattern();
+        padding: 5px;
+    }
+
+    #decline-invite,
+    #visualize-invite {
+        color: $blueGreen;
+        border: 1px solid $blueGreen;
+        background-color: transparent;
+    }
+}

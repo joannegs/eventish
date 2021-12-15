@@ -1,0 +1,22 @@
+<div ngbDropdown>
+    <nav ngbDropdownToggle *ngIf="eventOwner" (click)="collapseToggle()"
+        [attr.aria-expanded]="!isCollapsed"
+        class="navbar navbar-light bg-light container-fluid container-fluid">
+        <p><strong>{{eventOwner.name}}</strong> has invited you to "<strong>{{inviteEvent.title}}</strong>"</p>
+        <div class="invite-buttons">
+            <button (click)="declineInvite()" id="decline-invite">
+                <bi name="x"></bi>
+            </button>
+            <button (click)="acceptInvite()" id="accept-invite">
+                <bi name="check"></bi>
+            </button>
+        </div>
+    </nav>
+</div>
+
+<div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed" *ngIf="inviteEvent">
+    <p> <i> "{{ invite.message }}" </i> </p>
+    <p> {{inviteEvent.description}} </p>
+    <p> <b>Starts at:</b> {{ inviteEvent.startsAt | date }} – {{ inviteEvent.startsAt | date:'HH:mm' }}</p>
+    <p> <b>Ends at:</b> {{ inviteEvent.endsAt |  date }} – {{ inviteEvent.endsAt | date:'HH:mm' }} </p>
+</div>
