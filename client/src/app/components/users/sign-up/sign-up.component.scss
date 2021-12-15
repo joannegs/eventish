@@ -1,0 +1,28 @@
+@import "../../../app.definitions.scss";
+
+@include inputSpan();
+
+h2{
+    margin-bottom: 3rem;
+}
+
+.text {
+    cursor: default;
+    @include noTextSelection();
+}
+
+.sign-up-page{
+    @include page();
+}
+
+.page-container{
+    @include centerDisplay();
+    flex-direction: column;
+}
+
+button {
+    @include buttonPattern();
+    width: 100%;
+    margin-top: 2rem;
+}
+

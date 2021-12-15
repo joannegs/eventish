@@ -1,0 +1,41 @@
+
+<div class="container-fluid sign-up-page">
+    <div class="container-sm page-container">
+        <div>
+            <h1 class="text">we'd like to know you better!</h1>
+            <h2 class="text">tell us your...</h2>
+        </div>
+
+        <div>
+            <form [formGroup]="signUpForm" (ngSubmit)="handleSignUp()">
+                <div class="input-group mb-3 input-login">
+                    <span class="input-group-text">
+                        <bi name="person"></bi>
+                    </span>
+                    <input formControlName="name" type="text" class="form-control"
+                        placeholder="First and last name" aria-label="E-mail"
+                        aria-describedby="basic-addon1" required pattern="^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)">
+                </div>
+                <div class="input-group mb-3 input-login">
+                    <span class="input-group-text">
+                        <bi name="envelope"></bi>
+                    </span>
+                    <input formControlName="email" type="text" class="form-control"
+                        placeholder="Best e-mail" aria-label="E-mail"
+                        aria-describedby="basic-addon1" required email>
+                </div>
+
+                <div class="input-group mb-3 input-login">
+                    <span class="input-group-text">
+                        <bi name="lock-fill"></bi>
+                    </span>
+                    <input formControlName="password" type="password" class="form-control"
+                        placeholder="Ideal password" aria-label="Password"
+                        aria-describedby="basic-addon1" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-filled">Sign up</button>
+            </form>
+        </div>
+    </div>
+</div>

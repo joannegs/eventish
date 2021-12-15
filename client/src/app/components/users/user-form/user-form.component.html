@@ -1,0 +1,34 @@
+<h2 *ngIf = "user" class="text">hey, {{ user.name }}  </h2>
+
+<div>
+    <form [formGroup]="userForm">
+        <div class="input-group mb-3 input-login">
+            <span class="input-group-text">
+                <bi name="person"></bi>
+            </span>
+            <input formControlName="name" type="text" class="form-control"
+                placeholder="First and last name" aria-label="E-mail"
+                aria-describedby="basic-addon1" required
+                pattern="^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)">
+        </div>
+        <div class="input-group mb-3 input-login">
+            <span class="input-group-text">
+                <bi name="envelope"></bi>
+            </span>
+            <input formControlName="email" type="text" class="form-control"
+                placeholder="Best e-mail" aria-label="E-mail"
+                aria-describedby="basic-addon1" required email>
+        </div>
+
+        <button class="btn btn-primary btn-filled">Delete account</button>
+        <button type="submit" class="btn btn-primary btn-filled">Save</button>
+    </form>
+</div>
+
+<ng-template #loading>
+    <div class="d-flex justify-content-center">
+        <div class="spinner-grow" role="status">
+        </div>
+    </div>
+</ng-template>
+

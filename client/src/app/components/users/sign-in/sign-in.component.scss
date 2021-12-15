@@ -1,0 +1,15 @@
+@import "../../../app.definitions.scss";
+
+form {
+    @include formDisplay();
+}
+
+button {
+    @include buttonPattern();
+}
+
+.text{
+    margin-bottom: 5rem;
+}
+
+@include inputSpan();
