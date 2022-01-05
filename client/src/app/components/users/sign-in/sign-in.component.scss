@@ -8,8 +8,13 @@ button {
     @include buttonPattern();
 }
 
-.text{
+.text {
     margin-bottom: 5rem;
+}
+
+a {
+    margin-top: 1rem;
+    @include clickable();
 }
 
 @include inputSpan();

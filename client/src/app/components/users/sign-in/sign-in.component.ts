@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../../interfaces/user.interface';
 import { AuthService } from '../../../core/services/auth/auth.service';
@@ -12,11 +12,13 @@ import { InfoMessagesService } from '../../../core/services/messages/info-messag
 export class SignInComponent implements OnInit {
   private user: User;
   signInForm: FormGroup;
+  @Output() resetPassword: EventEmitter<boolean>;
 
   constructor(private authService: AuthService,
     private formBuilder: FormBuilder, 
     private messagesService: InfoMessagesService) {
     this.user = {} as User;
+    this.resetPassword = new EventEmitter<boolean>();
   }
 
   private buildForm() {
@@ -41,6 +43,15 @@ export class SignInComponent implements OnInit {
       detail: 'Invalid e-mail. The corret format must follow the patter: your@email.com' })
     }
   }
+
+  handleResetPasswordDisplay(){
+    this.resetPassword.emit(true);
+  }
+
+  /* handleReturnToSignInPage(display: any){
+    this.resetPassword.emit(display);
+  }
+ */
 
   ngOnInit(): void {
     this.buildForm();

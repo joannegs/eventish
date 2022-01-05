@@ -24,6 +24,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ResetPasswordComponent } from './components/users/reset-password/reset-password.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { HeaderComponent } from './components/header/header.component';
 
     DashboardComponent,
     HeaderComponent,
+    ResetPasswordComponent,
   ],
 
   imports: [

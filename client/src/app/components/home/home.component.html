@@ -24,8 +24,9 @@
 
         <!-- parte da direita: poderá ser o component de login ou o de sign up -->
         <div class="user-form col-7">
-            <sign-in *ngIf="!displaySignUp"></sign-in>
-            <sign-up *ngIf="displaySignUp"> </sign-up>
+            <sign-in (resetPassword)="handleResetPasswordDisplay($event)" *ngIf="!displayResetPassword && !displaySignUp"></sign-in>
+            <sign-up *ngIf="!displayResetPassword && displaySignUp"> </sign-up>
+            <reset-password (displaySignIn)="handleReturnToSignUpPage($event)" *ngIf="displayResetPassword"> </reset-password>
         </div>
 
     </div>
