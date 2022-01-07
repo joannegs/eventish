@@ -17,7 +17,23 @@ const schema = new Schema({
     password: {
         type: String, 
         required: true
+    },
+
+    passwordResetToken: {
+        type: String, 
+        select: false
+    },
+
+    passwordResetExpiration: {
+        type: Date, 
+        select: false
+    },
+
+    createdAt: {
+        type: Date, 
+        default: Date.now,
     }
+
 });
 
 export const User = mongoose.model('User', schema);

@@ -28,5 +28,7 @@ type Mutation {
     updateUser(data: UserInput!): User
     deleteUser: Boolean
     login(email: String!, password: String!): AuthUser
+    forgotPassword(email: String!): Boolean!
+    resetPassword(token: String!, password: String!): Boolean!
 }
 `

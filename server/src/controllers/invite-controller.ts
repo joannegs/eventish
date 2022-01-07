@@ -1,12 +1,12 @@
 import { NextFunction, Request, Response } from 'express';
 import * as inviteRepository from '../repositories/invite-repository';
-import { decodeToken } from '../services/authService';
+import { decodeLoginToken } from '../services/authService';
 import * as eventRepository from '../repositories/event-repository';
 
 export const getByUser = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const token = req.headers.authorization;
-        const user_id = (await decodeToken(token)).id;
+        const user_id = (await decodeLoginToken(token)).id;
         let invite = await inviteRepository.getByUser(user_id);
 
         res.status(200).send(invite);
@@ -30,7 +30,7 @@ export const patch = async (req: Request, res: Response, next: NextFunction) => 
         let invite = await inviteRepository.getById(req.query.id);
         let event = await eventRepository.getById(invite.event);
         const token = req.headers.authorization;
-        const user_id = (await decodeToken(token)).id;
+        const user_id = (await decodeLoginToken(token)).id;
 
         if (event.user != user_id) {
             res.status(401).send({ message: 'Not authorized' });
@@ -51,7 +51,7 @@ export const remove = async (req: Request, res: Response, next: NextFunction) =>
     try {
         let invite = await inviteRepository.getById(req.query.id);
         const token = req.headers.authorization;
-        const user_id = (await decodeToken(token)).id;
+        const user_id = (await decodeLoginToken(token)).id;
 
         if (invite.user != user_id) {
             res.status(401).send({ message: 'Not authorized' });

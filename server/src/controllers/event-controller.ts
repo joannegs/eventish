@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import * as eventRepository from '../repositories/event-repository';
-import { decodeToken } from '../services/authService';
+import { decodeLoginToken } from '../services/authService';
 import { getByEvent as getInviteByEvent, remove as removeInvite } from '../repositories/invite-repository';
 import { getByEvent as getEventGuestByEvent, remove as removeEventGuest } from '../repositories/eventGuest-repository';
 
@@ -18,7 +18,7 @@ export const getById = async (req: Request, res: Response, next: NextFunction) =
 export const getByUser = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const token = req.headers.authorization;
-        const user_id = (await decodeToken(token)).id;
+        const user_id = (await decodeLoginToken(token)).id;
         let events = await eventRepository.getByUser(user_id);
         res.status(200).send(events);
     } catch (error: any) {
@@ -29,7 +29,7 @@ export const getByUser = async (req: Request, res: Response, next: NextFunction)
 export const post = async (req: any, res: any, next: any) => {
     try {
         const token = req.headers.authorization;
-        const user_id = (await decodeToken(token)).id;
+        const user_id = (await decodeLoginToken(token)).id;
         await eventRepository.create(req.body, user_id);
         res.status(201).send({ message: 'Event successful saved' });
     } catch (error: any) {
