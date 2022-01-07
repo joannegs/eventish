@@ -48,11 +48,6 @@ export class SignInComponent implements OnInit {
     this.resetPassword.emit(true);
   }
 
-  /* handleReturnToSignInPage(display: any){
-    this.resetPassword.emit(display);
-  }
- */
-
   ngOnInit(): void {
     this.buildForm();
   }

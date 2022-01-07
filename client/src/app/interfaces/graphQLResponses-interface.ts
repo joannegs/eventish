@@ -39,3 +39,16 @@ export interface IGetUserByID {
         _id: string;
     }
 }
+
+export interface IForgotPassword {
+    errors?: [{ message: string }],
+
+    forgotPassword: boolean
+}
+
+export interface IResetPassword {
+    errors?: [{ message: string }],
+
+    resetPassword: boolean
+}
+

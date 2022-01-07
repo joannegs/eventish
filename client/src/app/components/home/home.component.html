@@ -26,7 +26,7 @@
         <div class="user-form col-7">
             <sign-in (resetPassword)="handleResetPasswordDisplay($event)" *ngIf="!displayResetPassword && !displaySignUp"></sign-in>
             <sign-up *ngIf="!displayResetPassword && displaySignUp"> </sign-up>
-            <reset-password (displaySignIn)="handleReturnToSignUpPage($event)" *ngIf="displayResetPassword"> </reset-password>
+            <forgot-password (displaySignIn)="handleReturnToSignUpPage($event)" *ngIf="displayResetPassword"> </forgot-password>
         </div>
     </div>
 </div>

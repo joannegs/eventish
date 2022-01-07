@@ -1,4 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { InfoMessagesService } from 'src/app/core/services/messages/info-messages.service';
+import { UsersService } from 'src/app/core/services/users/users.service';
 
 @Component({
   selector: 'reset-password',
@@ -7,17 +10,29 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class ResetPasswordComponent implements OnInit {
 
-  @Output() displaySignIn: EventEmitter<boolean>;
+  token: string;
+  password: string;
 
-  constructor() {
-    this.displaySignIn = new EventEmitter();
-   }
+  constructor(private route: ActivatedRoute, 
+    private router: Router,
+    private userService: UsersService,
+    private messageService: InfoMessagesService){
+    this.token = this.route.snapshot.params['token'];
+  }
 
   ngOnInit(): void {
   }
 
-  returnToSignInPage(){
-    this.displaySignIn.emit(true);
+  handleGoToHomePage(){
+    this.router.navigate(['/']);
+  }
+
+  handleResetPassword(){
+    this.userService.handleResetPassword(this.token, this.password);
+    this.messageService.showMessage({ severity: 'success', summary: "The account was successful reseted", 
+    detail: 'Now you can sign in using your new password'});
+
+    this.handleGoToHomePage();
   }
 
 }
